@@ -24,7 +24,6 @@ public class Controller {
         this.dao = dao;
         person = new Person();
         getData("person");
-
     }
 
     //salma
@@ -109,4 +108,22 @@ public class Controller {
         }
     }
     //amr
+     public void updateRow(Person person) {
+        try {
+            if (!flag) {
+
+                resultSet.updateInt("id", person.getId());
+                resultSet.updateString("fname", person.getfName());
+                resultSet.updateString("lname", person.getlName());
+                resultSet.updateString("mname", person.getmName());
+                resultSet.updateString("email", person.getEmail());
+                resultSet.updateString("phone", person.getPhone());
+                resultSet.updateRow();
+            } else {
+                System.out.println("no Row TO update");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
