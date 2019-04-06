@@ -59,10 +59,7 @@ public class DataBaseConnector  {
         return mysqlDataSource;
     }
      
-     public static void main(String[] args) {
-        // TODO code application logic here
-        launch(args);
-    }
+ 
 
      
 }

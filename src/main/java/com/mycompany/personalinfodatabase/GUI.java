@@ -13,13 +13,13 @@ import javafx.scene.layout.Pane;
 public class GUI extends Pane {
     //Author Salma
 
-    protected Button new_Btn;
-    protected Button update_Btn;
-    protected Button delete_Btn;
-    protected Button first_Btn;
-    protected Button next_Btn;
-    protected Button prev_Btn;
-    protected Button last_Btn;
+    protected Button new_BT;
+    protected Button update_BT;
+    protected Button delete_BT;
+    protected Button first_BT;
+    protected Button next_BT;
+    protected Button prev_BT;
+    protected Button last_BT;
     protected Label label;
     protected Label label0;
     protected Label label1;
@@ -35,16 +35,20 @@ public class GUI extends Pane {
 
     boolean isNew = false;
     boolean isClea = false;
+    Controller controler;
+    Person person;
 
     //Author Amr
-    public GUI() {
-        new_Btn = new Button();
-        update_Btn = new Button();
-        delete_Btn = new Button();
-        first_Btn = new Button();
-        next_Btn = new Button();
-        prev_Btn = new Button();
-        last_Btn = new Button();
+    public GUI(Controller controler) {
+        
+        this.controler=controler;
+        new_BT = new Button();
+        update_BT = new Button();
+        delete_BT = new Button();
+        first_BT = new Button();
+        next_BT = new Button();
+        prev_BT = new Button();
+        last_BT = new Button();
         label = new Label();
         label0 = new Label();
         label1 = new Label();
@@ -66,44 +70,44 @@ public class GUI extends Pane {
         setPrefHeight(400.0);
         setPrefWidth(600.0);
 
-        new_Btn.setLayoutX(46.0);
-        new_Btn.setLayoutY(343.0);
-        new_Btn.setMnemonicParsing(false);
-        new_Btn.setText("new");
+        new_BT.setLayoutX(46.0);
+        new_BT.setLayoutY(343.0);
+        new_BT.setMnemonicParsing(false);
+        new_BT.setText("new");
 
-        update_Btn.setLayoutX(127.0);
-        update_Btn.setLayoutY(343.0);
-        update_Btn.setMnemonicParsing(false);
-        update_Btn.setText("update");
+        update_BT.setLayoutX(127.0);
+        update_BT.setLayoutY(343.0);
+        update_BT.setMnemonicParsing(false);
+        update_BT.setText("update");
 
-        delete_Btn.setLayoutX(205.0);
-        delete_Btn.setLayoutY(343.0);
-        delete_Btn.setMnemonicParsing(false);
-        delete_Btn.setText("delete");
+        delete_BT.setLayoutX(205.0);
+        delete_BT.setLayoutY(343.0);
+        delete_BT.setMnemonicParsing(false);
+        delete_BT.setText("delete");
 
-        first_Btn.setLayoutX(274.0);
-        first_Btn.setLayoutY(343.0);
-        first_Btn.setMnemonicParsing(false);
-        first_Btn.setPrefHeight(25.0);
-        first_Btn.setPrefWidth(39.0);
-        first_Btn.setText("first");
+        first_BT.setLayoutX(274.0);
+        first_BT.setLayoutY(343.0);
+        first_BT.setMnemonicParsing(false);
+        first_BT.setPrefHeight(25.0);
+        first_BT.setPrefWidth(39.0);
+        first_BT.setText("first");
 
-        next_Btn.setLayoutX(341.0);
-        next_Btn.setLayoutY(343.0);
-        next_Btn.setMnemonicParsing(false);
-        next_Btn.setPrefHeight(25.0);
-        next_Btn.setPrefWidth(49.0);
-        next_Btn.setText("next");
+        next_BT.setLayoutX(341.0);
+        next_BT.setLayoutY(343.0);
+        next_BT.setMnemonicParsing(false);
+        next_BT.setPrefHeight(25.0);
+        next_BT.setPrefWidth(49.0);
+        next_BT.setText("next");
 
-        prev_Btn.setLayoutX(420.0);
-        prev_Btn.setLayoutY(343.0);
-        prev_Btn.setMnemonicParsing(false);
-        prev_Btn.setText("prev");
+        prev_BT.setLayoutX(420.0);
+        prev_BT.setLayoutY(343.0);
+        prev_BT.setMnemonicParsing(false);
+        prev_BT.setText("prev");
 
-        last_Btn.setLayoutX(499.0);
-        last_Btn.setLayoutY(343.0);
-        last_Btn.setMnemonicParsing(false);
-        last_Btn.setText("last");
+        last_BT.setLayoutX(499.0);
+        last_BT.setLayoutY(343.0);
+        last_BT.setMnemonicParsing(false);
+        last_BT.setText("last");
 
         label.setLayoutX(32.0);
         label.setLayoutY(83.0);
@@ -157,13 +161,13 @@ public class GUI extends Pane {
         phone_TF.setPrefHeight(25.0);
         phone_TF.setPrefWidth(211.0);
 
-        getChildren().add(new_Btn);
-        getChildren().add(update_Btn);
-        getChildren().add(delete_Btn);
-        getChildren().add(first_Btn);
-        getChildren().add(next_Btn);
-        getChildren().add(prev_Btn);
-        getChildren().add(last_Btn);
+        getChildren().add(new_BT);
+        getChildren().add(update_BT);
+        getChildren().add(delete_BT);
+        getChildren().add(first_BT);
+        getChildren().add(next_BT);
+        getChildren().add(prev_BT);
+        getChildren().add(last_BT);
         getChildren().add(label);
         getChildren().add(label0);
         getChildren().add(label1);
@@ -176,6 +180,50 @@ public class GUI extends Pane {
         getChildren().add(lName_TF);
         getChildren().add(email_TF);
         getChildren().add(phone_TF);
+        
+        
+        
+        
+        
+        showInForm(controler.firstRecord());
+
+        new_BT.setOnAction((event) -> {
+            clear();
+            isNew = true;
+        });
+        next_BT.setOnAction((event) -> {
+            showInForm(controler.nextRecord());
+        });
+        prev_BT.setOnAction((event) -> {
+            showInForm(controler.previousRecord());
+        });
+        last_BT.setOnAction((event) -> {
+            showInForm(controler.lastRecord());
+        });
+        first_BT.setOnAction((event) -> {
+            showInForm(controler.firstRecord());
+        });
+        update_BT.setOnAction((event) -> {
+            if (isNew) {
+                person = getFromForm();
+                controler.insetRow(person);
+                System.out.println("Row inserted");
+                isNew=false;
+            } else {
+                controler.updateRow(getFromForm());
+                System.out.println("update done");
+            }
+            //clear();
+            
+        });
+        delete_BT.setOnAction((event) -> {
+            if (!isNew) {
+                controler.deleteRow();
+                showInForm(controler.nextRecord());
+            }
+
+        });
+
              
     }
      public void showInForm(Person person) {

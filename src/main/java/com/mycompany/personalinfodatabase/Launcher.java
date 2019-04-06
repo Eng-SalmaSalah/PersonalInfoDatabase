@@ -15,6 +15,8 @@ import javafx.stage.Stage;
  * @author salma
  */
 public class Launcher extends Application{
+    Controller controller;
+    DAO dao;
      public static void main(String[] args) {
         // TODO code application logic here
         launch(args);
@@ -22,7 +24,9 @@ public class Launcher extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        GUI root = new GUI();
+        dao = new DAO();
+        controller = new Controller(dao);
+        GUI root = new GUI(controller);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
