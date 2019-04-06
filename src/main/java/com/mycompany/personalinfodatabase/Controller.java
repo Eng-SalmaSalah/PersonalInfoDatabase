@@ -74,8 +74,8 @@ public class Controller {
 
         return person;
     }
-    
-        public void deleteRow() {
+
+    public void deleteRow() {
         try {
             if (resultSet.isLast()) {
                 // resultSet.previous();
@@ -93,5 +93,20 @@ public class Controller {
         }
     }
 
+    public void insetRow(Person person) {
+        try {
+            resultSet.moveToInsertRow();
+            resultSet.updateInt("id", person.getId());
+            resultSet.updateString("fname", person.getfName());
+            resultSet.updateString("lname", person.getlName());
+            resultSet.updateString("mname", person.getmName());
+            resultSet.updateString("email", person.getEmail());
+            resultSet.updateString("phone", person.getPhone());
+            resultSet.insertRow();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
     //amr
 }
