@@ -178,5 +178,40 @@ public class GUI extends Pane {
         getChildren().add(phone_TF);
              
     }
+     public void showInForm(Person person) {
+        id_TF.setText(person.getId() + "");
+        lName_TF.setText(person.getlName());
+        fName_TF.setText(person.getfName());
+        middelName_TF.setText(person.getmName());
+        email_TF.setText(person.getEmail());
+        phone_TF.setText(person.getPhone());
+    }
+
+    public Person getFromForm() {
+        Person person2 = new Person();
+        try{
+        person2.setId(Integer.parseInt(id_TF.getText()));
+        person2.setEmail(email_TF.getText());
+        person2.setlName(lName_TF.getText());
+        person2.setPhone(phone_TF.getText());
+        person2.setmName(middelName_TF.getText());
+        person2.setfName(fName_TF.getText());
+        }catch(NumberFormatException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        return person2;
+    }
+
+    public void clear() {
+        id_TF.setText("");
+        lName_TF.setText("");
+        fName_TF.setText("");
+        middelName_TF.setText("");
+        email_TF.setText("");
+        phone_TF.setText("");
+        isClea=true;
+
+    }
 
 }
