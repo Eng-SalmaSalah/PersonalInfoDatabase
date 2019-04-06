@@ -6,16 +6,12 @@
 package com.mycompany.personalinfodatabase;
 
 /**
- *
- * @author Amr Elkady
+*
+
+ * @author salma
  */
+
 public class Person {
-    
-    //salma
-    
-    
-    
-    //amr
     private int id ;
     private String fName;
     private String mName;
@@ -23,21 +19,27 @@ public class Person {
     private String email;
     private String phone;
 
-    public Person(int id, String fName, String mName, String lName, String email, String phone) {
+    public Person(int id, String firstName, String middleName, String lastName, String email, String phone) {
         this.id = id;
         this.fName = fName;
         this.mName = mName;
         this.lName = lName;
+
         this.email = email;
         this.phone = phone;
     }
 
-    public Person() {
+
+    public Person() {}
+
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {
         this.id = id;
     }
+
 
     public void setfName(String fName) {
         this.fName = fName;
@@ -59,9 +61,7 @@ public class Person {
         this.phone = phone;
     }
 
-    public int getId() {
-        return id;
-    }
+    
 
     public String getfName() {
         return fName;
@@ -73,16 +73,18 @@ public class Person {
 
     public String getlName() {
         return lName;
+
     }
 
     public String getEmail() {
         return email;
     }
 
+
     public String getPhone() {
         return phone;
     }
 
-     
+
     
 }
