@@ -14,6 +14,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Properties;
+import static javafx.application.Application.launch;
 import javax.sql.DataSource;
 
 
@@ -56,6 +57,11 @@ public class DataBaseConnector  {
             ex.printStackTrace();
         }
         return mysqlDataSource;
+    }
+     
+     public static void main(String[] args) {
+        // TODO code application logic here
+        launch(args);
     }
 
      
