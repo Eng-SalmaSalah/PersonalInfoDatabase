@@ -108,7 +108,9 @@ public class Controller {
         }
     }
     //amr
-     public void updateRow(Person person) {
+
+    public void updateRow(Person person) {
+
         try {
             if (!flag) {
 
@@ -126,4 +128,41 @@ public class Controller {
             ex.printStackTrace();
         }
     }
+
+    public Person firstRecord() {
+
+        try {
+            resultSet.first();
+            person.setId(resultSet.getInt("id"));
+            person.setfName(resultSet.getString("fname"));
+            person.setlName(resultSet.getString("lname"));
+            person.setmName(resultSet.getString("mname"));
+            person.setEmail(resultSet.getString("email"));
+            person.setPhone(resultSet.getString("phone"));
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return person;
+    }
+
+    public Person lastRecord() {
+
+        try {
+            resultSet.last();
+            person.setId(resultSet.getInt("id"));
+            person.setfName(resultSet.getString("fname"));
+            person.setlName(resultSet.getString("lname"));
+            person.setmName(resultSet.getString("mname"));
+            person.setEmail(resultSet.getString("email"));
+            person.setPhone(resultSet.getString("phone"));
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return person;
+    }
+
 }
